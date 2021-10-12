@@ -17,6 +17,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.NguyenBower.hc.Global.Companion.categoryG
+import com.NguyenBower.hc.Global.Companion.searchKeyM
+import com.NguyenBower.hc.Global.Companion.viewModelG
 import com.NguyenBower.hc.ui.theme.Gray500
 import com.NguyenBower.hc.ui.theme.HCTheme
 import com.NguyenBower.hc.ui.theme.White100
@@ -55,6 +58,7 @@ class MainScreen {
                 items.forEachIndexed { index, s ->
                     DropdownMenuItem(onClick = {
                         selectedIndex = index
+                        categoryG = items[selectedIndex]
                         expanded = false
                     }) {
                         Text(text = s)
@@ -85,7 +89,14 @@ class MainScreen {
             val context = LocalContext.current
 
             Button(
-                onClick = {Global.viewModelG.getDataList()
+                onClick = {when(categoryG){
+                    "Name" -> viewModelG.getHospitalName(searchKeyM)
+                    "Provider ID" -> viewModelG.getHospitalId(searchKeyM)
+                    "City" -> viewModelG.getHospitalCity(searchKeyM)
+                    "State" -> viewModelG.getHospitalState(searchKeyM)
+                    "Zip Code" -> viewModelG.getHospitalIdZip(searchKeyM)
+                    "County" -> viewModelG.getHospitalCounty(searchKeyM)
+                    else -> viewModelG.getDataList()}
                     navController.navigate(Screens.ListScreen.route)},
                 modifier = Modifier.padding(all = Dp(10F)),
                 enabled = true,
@@ -103,7 +114,8 @@ class MainScreen {
         Row() {
             DropdownBox()
             OutlinedTextField(value = text,
-                onValueChange = {text=it},
+                onValueChange = {text=it
+                                searchKeyM=it},
                 modifier = Modifier
                     .background(White100))
         }

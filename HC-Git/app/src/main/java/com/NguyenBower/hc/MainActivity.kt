@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         viewModelG = viewModelX
 //        viewModelG.getDataList()
 //        viewModelX.getHospital()
-        viewModelG.dataResponse2.observe(this, { response ->
+        viewModelG.dataResponseHospital.observe(this, { response ->
             Log.d("Check",viewModelG.dataResponseHospital.toString())
             if(response.isSuccessful) {
                 val result = response.body()
@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
                     Log.d("Catch",result.toString())
                 }
                 if (result != null) {
-                    datalist = result
-//                    datalistHospital = result.data
+//                    datalist = result
+                    datalistHospital = result.data
                 }
             }else{
                 Log.d("Response2",response.errorBody().toString())
@@ -56,6 +56,7 @@ class Global:Application(){
     companion object{
         lateinit var viewModelG: MainViewModel
         lateinit var searchKeyM: String
+        lateinit var categoryG: String
         var datalist: List<dataModel> = mutableListOf()
         var datalistHospital: List<HData> = mutableListOf()
     }

@@ -76,15 +76,7 @@ class RetreiveData {
 
     @Composable
     fun ListScreen(navController:NavController,endpoint:String = "1", searchKey:String=""){
-        dataList2(dataList = Global.datalist,navController)
-//        dataList(dataList = Global.datalistHospital,navController)
+//        dataList2(dataList = Global.datalist,navController)
+        dataList(dataList = Global.datalistHospital,navController)
     }
-
-
-    @Preview
-    @Composable
-    fun PreviewList(){
-//        ListScreen(onNavigation = { /*TODO*/ })
-    }
-
 }
