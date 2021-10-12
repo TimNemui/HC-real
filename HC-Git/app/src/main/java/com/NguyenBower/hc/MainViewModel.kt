@@ -13,7 +13,7 @@ class MainViewModel(private val repository: Repository):ViewModel() {
 
     val dataResponse:MutableLiveData<Response<dataModel>> = MutableLiveData()
     val dataResponse2:MutableLiveData<Response<List<dataModel>>> = MutableLiveData()
-    val dataResponseHospital:MutableLiveData<Response<List<HospitalSchema>>> = MutableLiveData()
+    val dataResponseHospital:MutableLiveData<Response<HospitalSchema>> = MutableLiveData()
     fun getData(){
         viewModelScope.launch {
             val response = repository.getData()

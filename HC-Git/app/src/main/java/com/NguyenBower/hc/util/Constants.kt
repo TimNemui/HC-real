@@ -7,6 +7,6 @@ class Constants {
         //Class Server
 //        const val BASE_URL=" http://mango.cs.uwp.edu:3000/api/v1/"
 
-//        const val BASE_URL="http://192.168.0.9:8080"
+//        const val BASE_URL="http://131.210.231.226:8080/"
     }
 }

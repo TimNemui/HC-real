@@ -14,31 +14,31 @@ class Repository {
         return RetrofitInstance.api.getEmployList()
     }
 
-    suspend fun getHospital(): Response<List<HospitalSchema>>{
+    suspend fun getHospital(): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospital()
     }
 
-    suspend fun getHospitalId(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalId(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getProvideId(parameter)
     }
 
-    suspend fun getHospitalName(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalName(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospitalName(parameter)
     }
 
-    suspend fun getHospitalCity(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalCity(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospitalCity(parameter)
     }
 
-    suspend fun getHospitalState(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalState(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospitalState(parameter)
     }
 
-    suspend fun getHospitalZip(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalZip(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospitalZip(parameter)
     }
 
-    suspend fun getHospitalCounty(parameter: String): Response<List<HospitalSchema>>{
+    suspend fun getHospitalCounty(parameter: String): Response<HospitalSchema>{
         return RetrofitInstance.api.getHospotalCounty(parameter)
     }
 

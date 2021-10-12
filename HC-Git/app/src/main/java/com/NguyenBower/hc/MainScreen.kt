@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.NguyenBower.hc.ui.theme.Gray500
 import com.NguyenBower.hc.ui.theme.HCTheme
 import com.NguyenBower.hc.ui.theme.White100
+import kotlinx.coroutines.delay
 
 class MainScreen {
     var selectedQuery:String = "Name"
@@ -30,10 +31,10 @@ class MainScreen {
         val items = listOf("Name", "Provider ID", "City", "State", "Zip code", "County")
         var selectedIndex by remember { mutableStateOf(0) }
         Box(modifier = Modifier
-            .size(90.dp,56.dp)
+            .size(90.dp, 56.dp)
             .background(
-                    White100
-                )
+                White100
+            )
         ) {
             Text(
                 items[selectedIndex],
@@ -84,7 +85,8 @@ class MainScreen {
             val context = LocalContext.current
 
             Button(
-                onClick = {navController.navigate(Screens.ListScreen.route)},
+                onClick = {Global.viewModelG.getDataList()
+                    navController.navigate(Screens.ListScreen.route)},
                 modifier = Modifier.padding(all = Dp(10F)),
                 enabled = true,
                 shape = MaterialTheme.shapes.medium

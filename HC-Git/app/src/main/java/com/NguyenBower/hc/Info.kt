@@ -28,6 +28,11 @@ class Info {
         Text(text = location,color = Color.Black)
     }
 
+    @Composable
+    fun displayID(location:String = "This is where ID need to be"){
+        Text(text = location,color = Color.Black)
+    }
+
 
 
     @Composable
@@ -45,6 +50,7 @@ class Info {
                     .fillMaxWidth()
                     .fillMaxHeight()) {
                 displayName()
+                displayID()
                 displayLocation()
             }
         }

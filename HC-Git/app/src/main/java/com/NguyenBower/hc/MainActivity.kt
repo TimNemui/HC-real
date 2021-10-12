@@ -7,38 +7,42 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.findNavController
 import com.NguyenBower.hc.Global.Companion.datalist
+import com.NguyenBower.hc.Global.Companion.datalistHospital
+import com.NguyenBower.hc.Global.Companion.viewModelG
+import com.NguyenBower.hc.api.HData
+//import com.NguyenBower.hc.MainActivity.Global.Companion.datalistHospital
+import com.NguyenBower.hc.api.HospitalSchema
 import com.NguyenBower.hc.api.dataModel
 import com.NguyenBower.hc.repository.Repository
-import kotlinx.coroutines.Delay
-import kotlinx.coroutines.delay
+
 
 
 class MainActivity : ComponentActivity() {
-    val scee = RetreiveData()
-    val hommee = MainScreen()
     private lateinit var viewModelX: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModelX = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
-        viewModelX.getDataList()
-        viewModelX.dataResponse2.observe(this, Observer { response ->
+        viewModelG = viewModelX
+//        viewModelG.getDataList()
+//        viewModelX.getHospital()
+        viewModelG.dataResponse2.observe(this, { response ->
+            Log.d("Check",viewModelG.dataResponseHospital.toString())
             if(response.isSuccessful) {
                 val result = response.body()
                 if (result != null) {
+//                    Log.d("Catch",result.data.toString())
+                    Log.d("Catch",result.toString())
+                }
+                if (result != null) {
                     datalist = result
-                    result.forEach{
-                        Log.d("singleR", it.title)
-                        Log.d("singleR", it.userId.toString())
-                    }
+//                    datalistHospital = result.data
                 }
             }else{
                 Log.d("Response2",response.errorBody().toString())
-                
+
             }
         })
         setContent {
@@ -50,7 +54,13 @@ class MainActivity : ComponentActivity() {
 
 class Global:Application(){
     companion object{
+        lateinit var viewModelG: MainViewModel
+        lateinit var searchKeyM: String
         var datalist: List<dataModel> = mutableListOf()
+        var datalistHospital: List<HData> = mutableListOf()
+    }
+    fun obserbHospital(Para:String = "", searchKey:String = ""){
+
     }
 }
 
