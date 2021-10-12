@@ -56,12 +56,9 @@ class Global:Application(){
     companion object{
         lateinit var viewModelG: MainViewModel
         lateinit var searchKeyM: String
-        lateinit var categoryG: String
+        var categoryG: String = ""
         var datalist: List<dataModel> = mutableListOf()
         var datalistHospital: List<HData> = mutableListOf()
-    }
-    fun obserbHospital(Para:String = "", searchKey:String = ""){
-
     }
 }
 
